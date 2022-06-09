@@ -2,8 +2,8 @@
 
 ## Sobre o projeto
 
-Projeto feito para a aula de Construção de Software para Web, no segundo período da faculdade de ciência da computação.
-O projeto consiste de um jogo da memória, onde se deve encontrar a dupla de todas as figuras de filhotinhos para ganhar o jogo.
+Projeto feito para a aula de Construção de Software para Web, no segundo período do curso de Ciência da Computação.
+O projeto consiste de um jogo da memória, onde se deve encontrar a dupla de todas as figuras dos filhotinhos para ganhar o jogo.
 
 ## Acesso ao projeto
 Para jogar, entre no link a baixo:
@@ -23,7 +23,7 @@ O jogo funciona como um jogo da memória tradicional. Ele é composto por 18 car
 
 ![image](https://user-images.githubusercontent.com/95149345/172736817-8bacead0-9b78-48c8-ab8b-814aef232741.png)
 
-Ao carregar a página o jogo embaralha o verso das cartas e distrubui elas aleatóriamente pela pagina. Isso ocorre por base de duas funções:
+Ao carregar a página a função setSource() utiliza o algoritmo Fisher-Yates (http://sedition.com/perl/javascript-fy.html) para embaralhar a posição dos elementos do array das cartas, fazendo com que cada imagem seja definida como a fonte de duas cartas aleatórias.
 
 ```
 function shuffle(array) {
@@ -59,7 +59,8 @@ Ao clicar em uma carta, esta vira e permance virada até que outra carta seja cl
 Após escolher duas cartas, o código verifica se elas possuem a mesma imagem. Caso seja, a função "tranca" elas viradas, 
 se não a função faz elas virarem automáticamente.
 
-![Jogo-da-Memória-Opera-2022-06-08-21-20-56_Trim](https://user-images.githubusercontent.com/95149345/172739034-0410d983-f491-477e-b574-7d2727c5fdd4.gif)
+
+![Jogo-da-Memória-Opera-2022-06-08-21-20-56_Trim](https://user-images.githubusercontent.com/95149345/172739345-d6850edd-9427-4707-9f36-82f535fd4373.gif)
 
 
 ```
@@ -94,4 +95,34 @@ function flipCard(){
    }
 }
 ```
+Após completar todas as duplas, uma mensagem de alerta irá aparecer dando os parabéns. Isso acontece pois a função congratulation() checa a quantidade de cartas viradas toda vez que uma dupla é virada com sucesso. Essa função ativa o alerta de parabéns quando o lenght de cartas viradas chega a 18.
 
+
+![Parabéns](https://user-images.githubusercontent.com/95149345/172740290-c821da37-277a-46f7-9d8b-6de5a9b1f59b.gif)
+
+
+```
+function congratulations(){
+   let flipped = document.getElementsByClassName("flipCard")
+   if(flipped.length === 18){
+      setTimeout(() => {
+         alert("Parabéns!");
+      }, 500)
+   } 
+}
+```
+
+Ao final do jogo, ou durante o jogo se prefirir, o jogador tem a opção de apertar o botão de "rastart" que vai virar todas as cartas e embaralha-las novamente.
+
+
+![Restart](https://user-images.githubusercontent.com/95149345/172740824-f0488704-4d81-4a3a-a400-37a7b80e7741.gif)
+
+
+```
+function restart(){
+   cards.forEach(card => card.classList.remove("flipCard"))
+   setTimeout(() => {
+      setSource()
+   }, 500)
+}
+```
