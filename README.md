@@ -95,7 +95,7 @@ function flipCard(){
    }
 }
 ```
-Após completar todas as duplas, uma mensagem de alerta irá aparecer dando os parabéns. Isso acontece pois a função congratulation() checa a quantidade de cartas viradas toda vez que uma dupla é virada com sucesso. Essa função ativa o alerta de parabéns quando o lenght de cartas viradas chega a 18.
+Após completar todas as duplas, uma mensagem de alerta irá aparecer dando os parabéns. Isso acontece pois a função congratulation() checa a quantidade de cartas viradas toda vez que uma dupla é virada com sucesso. Essa função ativa o alerta de parabéns quando o length de cartas viradas chega a 18.
 
 
 ![Parabéns](https://user-images.githubusercontent.com/95149345/172740290-c821da37-277a-46f7-9d8b-6de5a9b1f59b.gif)
